@@ -7,6 +7,7 @@ class ITA_DeadReckoning:
         self.ultimoDistAlvoGPS = 0  # Ultima distância que o módulo do GPS informou que o avião encontra-se do alvo
         self.sinalPredict = 1       # Sinal que indica se o avião está se afastando ou se aproximando do alvo
         self.distAlvoPredict = 1000    # Distância que o deadreckoning acha que está do alvo nesse momento.
+        self.pos = 1000
         
     # Função utilizada para realizar o deadreckoning 1D.
     # A ideia é que conforme o avião vai se aproximando do alvo, no intervalo que o GPS não pega dado, a distância do alvo
@@ -28,7 +29,7 @@ class ITA_DeadReckoning:
             self.distAlvoPredict = 1000
         if(self.distAlvoPredict < -1000):
             self.distAlvoPredict = -1000
-
+        self.pos = self.distAlvoPredict
         return self.distAlvoPredict
 
 
